@@ -18,6 +18,18 @@ all: # グループ名
 ansible -i hosts.yml -m ping all --private-key="$HOME/.ssh/id_rsa_aws.pem"
 ```
 
+もしくは、`ssh-agent`を用いることで`--private-key`の入力を省略することも出来る。
+
+```sh
+# fish
+eval (ssh-agent -c)
+ssh-add ~/.ssh/id_rsa_aws.pem
+```
+
+```sh
+ansible -i hosts.yml -m ping all
+```
+
 ```
 aws1 | SUCCESS => {
     "ansible_facts": {
