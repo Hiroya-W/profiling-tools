@@ -1,4 +1,4 @@
-# Ansible_tutorial
+# Ansible for ISUCON
 
 ## host.ymlを作成する
 
@@ -29,18 +29,8 @@ aws1 | SUCCESS => {
 
 ```
 
-## ansible.cfgに設定を記述
+## playbookを実行する
 
-```ini
-[defaults]
-; inventoryの指定
-inventory = ./hosts.yml
-; roleを格納するパスの指定
-roles_path = ./roles/
-; 実行ログの場所を指定
-log_path = ./ansible.log
-; 対象ホストの情報を収集するかどうか
-gathering = smart
-; 実行失敗時にできるretryファイルを作らない
-retry_files_enabled = False
+```sh
+ansible-playbook playbook.yml
 ```
