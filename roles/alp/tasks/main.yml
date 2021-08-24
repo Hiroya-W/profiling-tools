@@ -1,0 +1,41 @@
+---
+- name: "roles/alp/tasks/main Create alp work dir"
+  file:
+    path: "{{ alp_work_dir }}"
+    state: directory
+
+- name: "roles/alp/tasks/main Download binary"
+  get_url:
+    url: "https://github.com/tkuchiki/alp/releases/download/{{ alp_version }}/alp_linux_amd64.zip"
+    dest: "{{ alp_work_dir }}/alp_linux_amd64.zip"
+    checksum: "sha1:{{ alp_sha1_check_sum }}"
+    force: True
+  register: result
+  until: result is succeeded
+  retries: 3
+  delay: 5
+
+- name: "roles/alp/tasks/main Install unzip command with apt"
+  apt:
+    name: unzip
+  when: ansible_os_family == "Debian"
+  become: yes
+
+- name: "roles/alp/tasks/main Unzip package"
+  unarchive:
+    src: '{{ alp_work_dir }}/alp_linux_amd64.zip'
+    dest: '{{ alp_work_dir }}'
+    remote_src: yes
+
+- name: "roles/alp/tasks/main Put binary in /usr/local/bin/"
+  copy:
+    src: '{{ alp_work_dir }}/alp'
+    dest: '{{ alp_install_loc }}/'
+    remote_src: yes
+  become: yes
+
+- name: "roles/alp/tasks/main chmod a+x"
+  file:
+    dest: '{{ alp_install_loc }}/alp'
+    mode: a+x
+  become: yes
