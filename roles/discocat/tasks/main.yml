@@ -11,7 +11,7 @@
     msg: "{{ go_version_out.stdout }}"
 
 - name: "role/discocat/tasks/main Existing discocat"
-  command: "/home/{{ remote_user }}/go/bin/discocat --version"
+  command: "/home/{{ ansible_user }}/go/bin/discocat --version"
   register: go_version_out
   ignore_errors: yes
   check_mode: no
@@ -25,7 +25,7 @@
   changed_when: no
 
 - name: "role/discocat/tasks/main Check discocat version"
-  command: "/home/{{ remote_user }}/go/bin/discocat --version"
+  command: "/home/{{ ansible_user }}/go/bin/discocat --version"
   register: discocat_version_out
   ignore_errors: yes
   check_mode: no
@@ -37,10 +37,10 @@
 
 - name: "roles/alp/tasks/main Create discocat config dir"
   file:
-    path: "/home/{{ remote_user }}/.config/discocat"
+    path: "/home/{{ ansible_user }}/.config/discocat"
     state: directory
 
 - name: "role/discocat/tasks/main Put config.yml"
   template:
     src: templates/config.yml.j2
-    dest: "/home/{{ remote_user }}/.config/discocat/config.yml"
+    dest: "/home/{{ ansible_user }}/.config/discocat/config.yml"

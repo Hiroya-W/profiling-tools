@@ -2,7 +2,7 @@
 - name: "roles/vim/tasks/main Download vimrc"
   get_url:
     url: "https://gist.githubusercontent.com/Hiroya-W/8d6f6dd6667f14b8182c2144c68fdcd3/raw/e71f3074d0cd452108eb3d0b2e9c60bc27c3c89c/.vimrc"
-    dest: "/home/{{ ansible_ssh_user }}/.vimrc"
+    dest: "/home/{{ ansible_user }}/.vimrc"
     force: True
   register: result
   until: result is succeeded
