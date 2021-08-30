@@ -1,0 +1,21 @@
+---
+- name: "roles/apt-task/tasks/main Add apt repo"
+  apt_repository:
+    repo: "{{ item }}"
+  when: ansible_os_family == "Debian"
+  become: yes
+  with_items:
+    - ppa:fish-shell/release-3
+  notify:
+    - "apt-update"
+
+- name: "roles/apt-task/tasks/main Install packages with apt"
+  apt:
+    pkg:
+      - git
+      - unzip
+      - dstat
+      - fish
+      - percona-toolkit
+  when: ansible_os_family == "Debian"
+  become: yes
