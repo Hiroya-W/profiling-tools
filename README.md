@@ -1,25 +1,27 @@
-# Ansible for ISUCON
+# Profiling tools for ISUCON
 
-## host.ymlを作成する
+ISUCON でプロファイリングするためのツールをセットアップする Ansible role をまとめたリポジトリ
+
+## host.yml を作成する
 
 ```yml:hosts.yml
-all: # グループ名
+all:
   hosts:
-    aws1: # ホスト名
-      ansible_host: ec2-52-194-220-6.ap-northeast-1.compute.amazonaws.com # 対象アドレス
+    host1:
+      ansible_host: target.host.name
       ansible_user: ubuntu
       ansible_ssh_private_key_file: ~/.ssh/id_rsa_aws.pem
 ```
 
 この状態で、以下のコマンドを用いて疎通確認が行える。
-`-i`でhostsファイルを指定し、`-m`で利用するモジュールを指定し、対象のグループ名を続けて指定する。
+`-i`で hosts ファイルを指定し、`-m`で利用するモジュールを指定し、対象のグループ名を続けて指定する。
 
 ```sh
 ansible -i hosts.yml -m ping all
 ```
 
 ```
-aws1 | SUCCESS => {
+host1 | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python3"
     },
@@ -29,7 +31,7 @@ aws1 | SUCCESS => {
 
 ```
 
-## playbookを実行する
+## playbook を実行する
 
 ```sh
 ansible-playbook playbook.yml
