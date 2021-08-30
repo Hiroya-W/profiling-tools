@@ -1,0 +1,4 @@
+---
+remote_user: ubuntu
+discocat_bot_token: BOT_TOKEN_HERE
+discocat_channel_id: CHANNEL_ID_HERE
