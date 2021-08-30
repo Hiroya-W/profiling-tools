@@ -1,0 +1,9 @@
+---
+- name: "roles/git/tasks/main git global"
+  git_config:
+    scope: global
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+  with_items:
+   - name: user.name
+     value: isucon
