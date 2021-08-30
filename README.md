@@ -1,6 +1,12 @@
 # Profiling tools for ISUCON
 
-ISUCON でプロファイリングするためのツールをセットアップする Ansible role をまとめたリポジトリ
+ISUCON でプロファイリングするためのツールをセットアップする Ansible role をまとめたリポジトリです。
+
+主に以下のツールをセットアップします。
+
+- [tkuchiki/alp](https://github.com/tkuchiki/alp) Access Log Profiler
+- [percona/percona-toolkit](https://github.com/percona/percona-toolkit) collection of advanced command-line tools used by Percona support staff to perform a variety of MySQL and system tasks that are too difficult or complex to perform manually
+- [wan-nyan-wan/discocat](https://github.com/wan-nyan-wan/discocat) simple commandline utility to post snippets to Discord
 
 ## host.yml を作成する
 
