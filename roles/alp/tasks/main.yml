@@ -3,6 +3,7 @@
   file:
     path: "{{ alp_work_dir }}"
     state: directory
+  become: yes
 
 - name: "roles/alp/tasks/main Download binary"
   get_url:
@@ -14,6 +15,7 @@
   until: result is succeeded
   retries: 3
   delay: 5
+  become: yes
 
 - name: "roles/alp/tasks/main Install unzip command with apt"
   apt:
@@ -26,6 +28,7 @@
     src: '{{ alp_work_dir }}/alp_linux_amd64.zip'
     dest: '{{ alp_work_dir }}'
     remote_src: yes
+  become: yes
 
 - name: "roles/alp/tasks/main Put binary in /usr/local/bin/"
   copy:
