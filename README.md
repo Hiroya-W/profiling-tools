@@ -49,6 +49,18 @@ host1 | SUCCESS => {
 }
 ```
 
+## discocat 用の var を記述する
+
+```
+vim roles/discocat/vars/main.yml
+```
+
+```yml:roles/discocat/vars/main.yml
+---
+discocat_bot_token: BOT_TOKEN_HERE
+discocat_channel_id: CHANNEL_ID_HERE
+```
+
 ## playbook を実行する
 
 ```sh
