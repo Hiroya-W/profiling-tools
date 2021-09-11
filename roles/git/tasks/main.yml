@@ -7,3 +7,5 @@
   with_items:
    - name: user.name
      value: isucon
+   - name: user.email
+     value: isucon@isucon.com
