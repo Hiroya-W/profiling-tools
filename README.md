@@ -10,13 +10,26 @@ ISUCON でプロファイリングするためのツールをセットアップ�
 
 ## host.yml を作成する
 
+`localhost` をターゲットとする場合は、以下のようにする。
+
 ```yml:hosts.yml
 all:
   hosts:
     host1:
-      ansible_host: target.host.name
+      ansible_connection: local
+      ansible_host: localhost
       ansible_user: ubuntu
-      ansible_ssh_private_key_file: ~/.ssh/id_rsa_aws.pem
+```
+
+Remoteのホストとして `hoge.fuga.jp` をターゲットとする場合は、以下のようにする。
+
+```yml:hosts.yml
+all:
+  hosts:
+    host1:
+      ansible_host: hoge.fuga.jp
+      ansible_user: ubuntu
+      ansible_ssh_private_key_file: ~/.ssh/id_rsa_host1.pem
 ```
 
 この状態で、以下のコマンドを用いて疎通確認が行える。
@@ -34,7 +47,6 @@ host1 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
-
 ```
 
 ## playbook を実行する
