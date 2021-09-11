@@ -10,6 +10,19 @@ ISUCON でプロファイリングするためのツールをセットアップ�
 
 ## host.yml を作成する
 
+`localhost` をターゲットとする場合は、以下のようにする。
+
+```yml:hosts.yml
+all:
+  hosts:
+    host1:
+      ansible_connection: local
+      ansible_host: localhost
+      ansible_user: ubuntu
+```
+
+Remoteのホストとして `hoge.fuga.jp` をターゲットとする場合は、以下のようにする。
+
 ```yml:hosts.yml
 all:
   hosts:
