@@ -14,9 +14,9 @@ ISUCON でプロファイリングするためのツールをセットアップ�
 all:
   hosts:
     host1:
-      ansible_host: target.host.name
+      ansible_host: hoge.fuga.jp
       ansible_user: ubuntu
-      ansible_ssh_private_key_file: ~/.ssh/id_rsa_aws.pem
+      ansible_ssh_private_key_file: ~/.ssh/id_rsa_host1.pem
 ```
 
 この状態で、以下のコマンドを用いて疎通確認が行える。
@@ -34,7 +34,6 @@ host1 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
-
 ```
 
 ## playbook を実行する
