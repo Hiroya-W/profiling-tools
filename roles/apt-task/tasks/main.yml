@@ -6,8 +6,6 @@
   become: yes
   with_items:
     - ppa:fish-shell/release-3
-  notify:
-    - "apt-update"
 
 - name: "roles/apt-task/tasks/main Add GitHub CLI gpg key"
   shell: curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg --yes
@@ -19,6 +17,7 @@
 
 - name: "roles/apt-task/tasks/main Install packages with apt"
   apt:
+    update_cache: yes
     pkg:
       - git
       - unzip
