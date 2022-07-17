@@ -34,10 +34,10 @@
 
 - name: "roles/alp/tasks/main Create discocat config dir"
   file:
-    path: "/home/{{ ansible_user }}/.config/discocat"
+    path: "/home/{{ ansible_user }}/.config"
     state: directory
 
-- name: "role/discocat/tasks/main Put config.yml"
+- name: "role/discocat/tasks/main Put discocat.yml"
   template:
-    src: templates/config.yml.j2
-    dest: "/home/{{ ansible_user }}/.config/discocat/config.yml"
+    src: templates/discocat.yml.j2
+    dest: "/home/{{ ansible_user }}/.config/discocat.yml"
