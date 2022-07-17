@@ -36,7 +36,7 @@ all:
 `-i`で hosts ファイルを指定し、`-m`で利用するモジュールを指定し、対象のグループ名を続けて指定する。
 
 ```sh
-ansible -i hosts.yml -m ping all
+ansible -i inventory/hosts.yml -m ping all
 ```
 
 ```
