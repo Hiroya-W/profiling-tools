@@ -1,4 +1,13 @@
 ---
+- name: "roles/apt-task/tasks/main Install deps"
+  apt:
+    update_cache: yes
+    pkg:
+      - gnupg
+      - curl
+  when: ansible_os_family == "Debian"
+  become: yes
+
 - name: "roles/apt-task/tasks/main Add apt repo"
   apt_repository:
     repo: "{{ item }}"
