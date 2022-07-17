@@ -1,6 +1,6 @@
 ---
 - name: "role/discocat/tasks/main Existing go version"
-  command: "go version"
+  command: "{{ go_path }} version"
   register: go_version_out
   ignore_errors: no
   check_mode: no
@@ -18,10 +18,7 @@
   changed_when: no
 
 - name: "role/discocat/tasks/main Install discocat"
-  command: "go install {{ item.url }}@{{ item.version }}"
-  with_items:
-    - url: "github.com/wan-nyan-wan/discocat"
-      version: "latest"
+  command: "go install {{ discocat.url }}@{{ discocat.version }}"
   changed_when: no
 
 - name: "role/discocat/tasks/main Check discocat version"

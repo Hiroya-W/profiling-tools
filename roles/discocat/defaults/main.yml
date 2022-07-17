@@ -1,5 +1,9 @@
 ---
 go_path: /home/isucon/local/go/bin/go
 
+discocat:
+  - url: "github.com/wan-nyan-wan/discocat"
+  - version: "latest"
+
 discocat_bot_token: BOT_TOKEN_HERE
 discocat_channel_id: CHANNEL_ID_HERE
